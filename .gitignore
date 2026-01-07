@@ -1,0 +1,52 @@
+# Build artifacts
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Environment variables
+.env
+*.env
+application-local.properties
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Package files
+*.tgz
+*.zip
+*.tar.gz

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="title">Audio Visualizer</h1>
+            <p class="subtitle">Real-time frequency visualization and speech transcription</p>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="card controls-card">
+                    <h3 class="card-title">Controls</h3>
+                    <div class="controls-section">
+                        <button id="startBtn" class="btn btn-primary">
+                            <span class="icon">🎤</span>
+                            <span>Start</span>
+                        </button>
+                        <button id="stopBtn" class="btn btn-secondary" disabled>
+                            <span class="icon">⏹</span>
+                            <span>Stop</span>
+                        </button>
+                        <button id="toggleTranscription" class="btn btn-accent" disabled>
+                            <span class="icon">📝</span>
+                            <span>Transcribe</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card settings-card">
+                    <h3 class="card-title">Settings</h3>
+                    <div class="settings-section">
+                        <div class="setting-group">
+                            <label for="smoothing">
+                                <span>Smoothing</span>
+                                <span id="smoothingValue" class="value">0.8</span>
+                            </label>
+                            <input type="range" id="smoothing" min="0" max="1" step="0.1" value="0.8">
+                        </div>
+                        <div class="setting-group">
+                            <label for="fftSize">
+                                <span>FFT Size</span>
+                                <span id="fftSizeValue" class="value">2048</span>
+                            </label>
+                            <select id="fftSize">
+                                <option value="512">512</option>
+                                <option value="1024">1024</option>
+                                <option value="2048" selected>2048</option>
+                                <option value="4096">4096</option>
+                            </select>
+                        </div>
+                        <div class="setting-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="showFreqLabels" checked>
+                                <span>Show Frequency Labels</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="visualizer-section">
+                <div class="canvas-container">
+                    <canvas id="visualizer"></canvas>
+                    <div class="center-info">
+                        <div class="volume-level" id="volumeLevel">0</div>
+                        <div class="status-text" id="statusText">Ready</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="transcription-section">
+            <div class="card transcription-card">
+                <div class="card-header">
+                    <h3 class="card-title">Live Transcription</h3>
+                    <div class="transcription-info">
+                        <span id="connectionStatus" class="status-badge">Disconnected</span>
+                        <span id="latencyInfo" class="latency">Latency: --</span>
+                    </div>
+                </div>
+                <div class="transcription-container">
+                    <div id="transcriptionOutput" class="transcription-output">
+                        Click "Start" and then "Transcribe" to begin speech recognition...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="audioVisualizer.js"></script>
+    <script src="transcriptionService.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
